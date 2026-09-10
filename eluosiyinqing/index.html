@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>俄罗斯引擎浏览器-俄语搜索工具与安全访问指南</title>
+  <meta name="description" content="俄罗斯引擎浏览器专题：了解Yandex、Mail.ru等俄语搜索引擎与浏览器工具，获取安全访问、功能对比、使用技巧与常见问题解答。">
+  <meta name="keywords" content="俄罗斯引擎,俄罗斯浏览器,Yandex浏览器,俄语搜索,俄语引擎,安全访问俄网,俄语工具">
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f7fc;
+      color: #1e2430;
+      line-height: 1.6;
+    }
+
+    .wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header & nav */
+    .site-header {
+      background: linear-gradient(145deg, #0b1f3a, #132e4f);
+      color: white;
+      padding: 20px 0 16px;
+      border-bottom: 4px solid #e6b422;
+    }
+
+    .header-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: #e6b422;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 24px;
+      color: #0b1f3a;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .logo-text h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .main-nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .main-nav a {
+      color: #edf2fa;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .main-nav a:hover {
+      border-bottom-color: #e6b422;
+      color: #fff;
+    }
+
+    /* hero search panel */
+    .hero-section {
+      background: #fff;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(16, 42, 90, 0.1);
+      margin: 36px 0 28px;
+      padding: 38px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0b1f3a;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #2c3e5c;
+      max-width: 800px;
+    }
+
+    .searchbox-panel {
+      background: #f0f4fe;
+      border-radius: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 6px 8px 6px 24px;
+      border: 1px solid #cbd6e8;
+    }
+
+    .searchbox-panel input {
+      flex: 1 1 220px;
+      border: none;
+      background: transparent;
+      font-size: 1.1rem;
+      padding: 14px 0;
+      outline: none;
+      color: #1a2637;
+    }
+
+    .searchbox-panel button {
+      background: #0b1f3a;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-left: auto;
+    }
+
+    .searchbox-panel button:hover {
+      background: #1a3a62;
+    }
+
+    .quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .quick-tags span {
+      background: #eaeef7;
+      padding: 4px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #1f3a5f;
+    }
+
+    /* feature cards */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 650;
+      margin: 48px 0 24px;
+      color: #0b1f3a;
+      border-left: 6px solid #e6b422;
+      padding-left: 18px;
+    }
+
+    .engine-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin: 28px 0 20px;
+    }
+
+    .engine-card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+      border: 1px solid #e3eaf3;
+      transition: 0.15s ease;
+    }
+
+    .engine-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+    }
+
+    .engine-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #0f2c4e;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      background: #f0e6c8;
+      color: #7a5c00;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+    }
+
+    .engine-card p {
+      color: #2c3e5c;
+      margin-bottom: 16px;
+    }
+
+    .engine-card .feature-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .engine-card .feature-list li {
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+    }
+
+    .engine-card .feature-list li::before {
+      content: "✓";
+      color: #e6b422;
+      font-weight: 700;
+    }
+
+    .btn-dummy {
+      display: inline-block;
+      background: #eef2f9;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #132e4f;
+      border: 1px solid #d5deec;
+    }
+
+    /* comparison table */
+    .comparison-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+      border: 1px solid #dbe3f0;
+      overflow-x: auto;
+      margin: 30px 0;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    .comparison-table th {
+      background: #0b1f3a;
+      color: white;
+      padding: 14px 12px;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .comparison-table td {
+      padding: 13px 12px;
+      border-bottom: 1px solid #e9edf5;
+      color: #1f2b3a;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight-row td {
+      background-color: #fdf7e9;
+    }
+
+    /* usage guide steps */
+    .guide-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 22px;
+      margin: 30px 0 50px;
+    }
+
+    .step-item {
+      background: #fff;
+      padding: 24px 18px;
+      border-radius: 24px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+      border: 1px solid #dde3ef;
+      position: relative;
+    }
+
+    .step-num {
+      display: inline-flex;
+      background: #e6b422;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #0b1f3a;
+      margin-bottom: 12px;
+    }
+
+    .step-item h4 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      color: #0b1f3a;
+    }
+
+    /* faq */
+    .faq-block {
+      background: #f2f5fb;
+      border-radius: 28px;
+      padding: 32px 28px;
+      margin: 40px 0;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 16px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+
+    .faq-item h4 {
+      color: #0e2b4a;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .faq-item p {
+      color: #2c3e5c;
+    }
+
+    /* footer */
+    .site-footer {
+      background: #0b1f3a;
+      color: #b6c7e0;
+      padding: 30px 0;
+      margin-top: 40px;
+      border-top: 4px solid #e6b422;
+    }
+
+    .footer-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #b6c7e0;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .main-nav ul {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wrapper {
+        padding: 0 18px;
+      }
+      .searchbox-panel {
+        padding-left: 18px;
+      }
+      .engine-grid {
+        grid-template-columns: 1fr;
+      }
+      .guide-steps {
+        grid-template-columns: 1fr;
+      }
+      .logo-text h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper header-flex">
+      <div class="logo-area">
+        <div class="logo-icon">俄</div>
+        <div class="logo-text">
+          <h1>俄罗斯引擎浏览器</h1>
+          <p>俄语搜索 · 安全工具 · 深度指南</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="主导航">
+        <ul>
+          <li><a href="#">首页</a></li>
+          <li><a href="#">引擎对比</a></li>
+          <li><a href="#">安全访问</a></li>
+          <li><a href="#">使用教程</a></li>
+          <li><a href="#">常见问题</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper">
+    <!-- hero 首屏 -->
+    <section class="hero-section">
+      <h2 class="hero-title">探索俄罗斯引擎与浏览器：Yandex、Mail.ru 与更多</h2>
+      <p class="hero-sub">面向俄语内容搜索、跨境交流与信息获取的一站式参考页。了解主流俄语搜索引擎的特点、浏览器集成和访问方式，并获取实用技巧。</p>
+      <div class="searchbox-panel">
+        <input type="search" placeholder="输入俄语关键词或网站 (例如: yandex.ru, vk.com)" aria-label="搜索框">
+        <button type="button">搜索指南</button>
+      </div>
+      <div class="quick-tags">
+        <span>#Yandex浏览器</span>
+        <span>#俄语搜索</span>
+        <span>#Mail.ru引擎</span>
+        <span>#安全访问</span>
+        <span>#俄网工具</span>
+      </div>
+    </section>
+
+    <!-- 主流引擎卡片 -->
+    <h2 class="section-title">主流俄罗斯搜索引擎与浏览器工具</h2>
+    <div class="engine-grid">
+      <article class="engine-card">
+        <h3>Yandex 浏览器 <span class="badge">最流行</span></h3>
+        <p>俄罗斯市场占有率最高的搜索与浏览器生态。集成智能翻译、俄语语音助手Alice，适合深度俄语搜索。</p>
+        <ul class="feature-list">
+          <li>俄语/英语界面切换</li>
+          <li>内置DNS保护与反钓鱼</li>
+          <li>同步书签/密码</li>
+        </ul>
+        <span class="btn-dummy">了解 Yandex 生态</span>
+      </article>
+      <article class="engine-card">
+        <h3>Mail.ru 搜索</h3>
+        <p>依托Mail.ru门户，在俄语用户中保有较高份额，常与VK (Vkontakte) 联动，搜索社交内容方便。</p>
+        <ul class="feature-list">
+          <li>社交帖子/群组搜索</li>
+          <li>新闻聚合模块</li>
+          <li>轻量级网页加速</li>
+        </ul>
+        <span class="btn-dummy">Mail.ru 搜索技巧</span>
+      </article>
+      <article class="engine-card">
+        <h3>Rambler 引擎</h3>
+        <p>老牌俄语搜索及媒体门户，适合新闻、邮件与目录检索。界面简洁，隐私保护政策友好。</p>
+        <ul class="feature-list">
+          <li>新闻垂直搜索</li>
+          <li>邮箱一体化</li>
+          <li>无个性化追踪</li>
+        </ul>
+        <span class="btn-dummy">了解更多</span>
+      </article>
+      <article class="engine-card">
+        <h3>Sputnik 引擎</h3>
+        <p>俄罗斯官方支持的搜索引擎，强调安全过滤与儿童保护。适合教育机构和家庭使用。</p>
+        <ul class="feature-list">
+          <li>严格内容过滤</li>
+          <li>俄语白名单</li>
+          <li>无广告追踪</li>
+        </ul>
+        <span class="btn-dummy">安全搜索说明</span>
+      </article>
+    </div>
+
+    <!-- 对比表格和安全提示 -->
+    <div class="comparison-section">
+      <h3 style="font-size: 1.6rem; color:#0b1f3a; margin-bottom: 18px;">俄罗斯引擎浏览器功能对比</h3>
+      <table class="comparison-table">
+        <thead>
+          <tr><th>引擎/浏览器</th><th>适用场景</th><th>内置翻译</th><th>隐私侧重</th><th>特色</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Yandex</td><td>综合搜索/地图/翻译</td><td>✅ 强</td><td>中</td><td>Alice语音, 智能镜头</td></tr>
+          <tr><td>Mail.ru</td><td>社交内容、新闻</td><td>✅</td><td>中低</td><td>VK深度整合</td></tr>
+          <tr class="highlight-row"><td>Rambler</td><td>新闻邮件/老牌门户</td><td>部分</td><td>较高</td><td>无广告精简版</td></tr>
+          <tr><td>Sputnik</td><td>安全搜索/家庭</td><td>❌</td><td>高</td><td>内容过滤/儿童模式</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 20px; background: #f1f6fe; padding: 14px; border-radius: 12px; color: #1e3a5f;"><strong>⚡ 安全提示：</strong> 从官方渠道下载浏览器，避免第三方修改版。访问俄语网站时建议启用防追踪与安全DNS。部分功能可能需要网络环境支持，请遵守当地法律法规。</p>
+    </div>
+
+    <!-- 使用教程步骤 -->
+    <h2 class="section-title">如何高效使用俄罗斯引擎浏览器</h2>
+    <div class="guide-steps">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <h4>选择合适的引擎</h4>
+        <p>根据需求选择：Yandex适合综合搜索，Mail.ru适合社交与新闻，Rambler偏传统简洁，Sputnik安全过滤。</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <h4>设置浏览器语言</h4>
+        <p>下载安装后，在设置中选择“俄语”或“英语”，并开启自动翻译，浏览俄语网页更轻松。</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <h4>启用隐私保护</h4>
+        <p>在隐私设置中禁用第三方cookie，启用“不追踪”，使用内置VPN（部分Yandex版本）保护数据。</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <h4>利用俄语助手</h4>
+        <p>使用Alice语音助手或Yandex翻译扩展，快速翻译网页、图片文字，提高俄语搜索效率。</p>
+      </div>
+    </div>
+
+    <!-- FAQ 区块 -->
+    <div class="faq-block">
+      <h3 style="font-size: 1.8rem; margin-bottom: 18px; color:#0b1f3a;">俄罗斯引擎浏览器 · 常见问题</h3>
+      <div class="faq-item">
+        <h4>俄罗斯引擎浏览器是正规软件吗？</h4>
+        <p>Yandex浏览器、Mail.ru等均为合法发布的软件。建议从官网或应用商店下载，避免第三方捆绑。</p>
+      </div>
+      <div class="faq-item">
+        <h4>不会俄语，可以使用俄罗斯搜索引擎吗？</h4>
+        <p>可以。Yandex等浏览器内置翻译，搜索界面也支持英语。可以先用英语搜索，再翻译为俄语精搜。</p>
+      </div>
+      <div class="faq-item">
+        <h4>俄罗斯引擎浏览器会收集隐私吗？</h4>
+        <p>不同产品隐私策略不同。Rambler/Sputnik侧重隐私，Yandex默认收集数据用于个性化。可在设置中关闭广告ID。</p>
+      </div>
+      <div class="faq-item">
+        <h4>国内可以直接访问俄罗斯引擎网站吗？</h4>
+        <p>部分服务可能受网络环境影响。请了解相关合规要求，并采用合法网络工具。本文仅提供技术介绍。</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper footer-flex">
+      <div class="footer-copy">
+        &copy; 2025 俄罗斯引擎浏览器指南 · 非官方页面 · 信息参考
+      </div>
+      <div class="footer-links">
+        <a href="#">隐私说明</a>
+        <a href="#">联系编辑</a>
+        <a href="#">引擎官网</a>
+        <a href="#">网站地图</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 极简交互（无依赖） -->
+  <script>
+    (function() {
+      const searchBtn = document.querySelector('.searchbox-panel button');
+      const inputBox = document.querySelector('.searchbox-panel input');
+      if (searchBtn && inputBox) {
+        searchBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const val = inputBox.value.trim();
+          if (val) {
+            alert('您搜索: "' + val + '"\n在实际使用中会跳转至您选择的俄罗斯搜索引擎。');
+          } else {
+            alert('请输入关键词，例如 Yandex 或 Mail.ru');
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
