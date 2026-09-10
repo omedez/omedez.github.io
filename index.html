@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幻奇-幻想奇闻故事集与创意灵感分享平台</title>
+    <meta name="description" content="幻奇专注收集与创作充满想象力的奇幻故事、奇闻异事、脑洞创意与幻想艺术，为你打开一扇通往奇想世界的大门，每日更新精彩内容。">
+    <meta name="keywords" content="幻奇,奇幻,奇闻,幻想故事,脑洞,创意,奇想,幻想艺术,短篇故事">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "Helvetica Neue", Arial, sans-serif;
+            background: #f4f1ec;
+            color: #2d2a26;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* 页眉 */
+        .site-header {
+            background: #1e1b18;
+            color: #f0e9dd;
+            padding: 0.8rem 0;
+            border-bottom: 3px solid #d4a373;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f0e9dd;
+            display: flex;
+            align-items: baseline;
+        }
+        .logo span {
+            color: #d4a373;
+            font-size: 1rem;
+            margin-left: 6px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #e8e0d2;
+            font-size: 0.95rem;
+            padding: 0.3rem 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .main-nav a:hover {
+            border-bottom-color: #d4a373;
+            color: #fff;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #f0e9dd;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* 首屏 Hero */
+        .hero {
+            background: linear-gradient(135deg, #2b2620 0%, #4a3f35 100%);
+            color: #fdf8f2;
+            text-align: center;
+            padding: 4.5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,163,115,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #dcd2c2;
+            position: relative;
+        }
+        .hero .hero-tag {
+            display: inline-block;
+            background: rgba(212,163,115,0.25);
+            border: 1px solid #d4a373;
+            padding: 0.4rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        /* 内容容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* 分类板块 */
+        .category-section {
+            padding: 3rem 0 1rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #3a322a;
+        }
+        .section-title .line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, #d4a373, transparent);
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        .category-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.8rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #eee7dc;
+        }
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .category-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .category-card h3 {
+            font-size: 1.1rem;
+            color: #4a3f35;
+        }
+        .category-card p {
+            font-size: 0.85rem;
+            color: #8a7a6a;
+            margin-top: 0.3rem;
+        }
+
+        /* 最新奇谈 */
+        .latest-section {
+            padding: 2rem 0;
+        }
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+        .story-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            border: 1px solid #ebe3d8;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .story-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .story-cover {
+            height: 170px;
+            background: linear-gradient(145deg, #b8a99a, #7a6a5a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.8);
+        }
+        .story-body {
+            padding: 1.3rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .story-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2d2a26;
+        }
+        .story-body p {
+            font-size: 0.9rem;
+            color: #6b5d4e;
+            flex: 1;
+        }
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #9b8a78;
+            border-top: 1px dashed #ddd5c9;
+            padding-top: 0.8rem;
+        }
+        .btn {
+            display: inline-block;
+            background: #4a3f35;
+            color: #fff;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: 0.2s;
+            border: none;
+        }
+        .btn:hover {
+            background: #d4a373;
+        }
+
+        /* 奇想灵感 */
+        .idea-section {
+            background: #eae4db;
+            padding: 3rem 0;
+        }
+        .idea-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .idea-card {
+            background: #fffdf9;
+            border-radius: 16px;
+            padding: 1.8rem;
+            border-left: 5px solid #d4a373;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .idea-card .tag {
+            font-size: 0.75rem;
+            background: #f0e9dd;
+            color: #7a6a5a;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .idea-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #3a322a;
+        }
+        .idea-card p {
+            font-size: 0.9rem;
+            color: #6b5d4e;
+        }
+
+        /* 热门榜单 */
+        .rank-section {
+            padding: 3rem 0;
+        }
+        .rank-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .rank-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 0.8rem;
+        }
+        .rank-num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4a373;
+            width: 50px;
+            text-align: center;
+            font-style: italic;
+        }
+        .rank-item .rank-info {
+            flex: 1;
+        }
+        .rank-item .rank-info h4 {
+            font-size: 1rem;
+            color: #3a322a;
+        }
+        .rank-item .rank-info p {
+            font-size: 0.85rem;
+            color: #8a7a6a;
+        }
+        .rank-item .hot {
+            font-size: 0.9rem;
+            color: #c47a4a;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 3rem 0;
+            background: #f4f1ec;
+        }
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            border: 1px solid #eee5da;
+        }
+        .faq-item h3 {
+            font-size: 1rem;
+            color: #4a3f35;
+            margin-bottom: 0.4rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #6b5d4e;
+            margin-top: 0.5rem;
+            border-top: 1px solid #f0e9dd;
+            padding-top: 0.7rem;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: #1e1b18;
+            color: #b5a898;
+            padding: 2.5rem 0 1.5rem;
+            margin-top: 2rem;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .footer-brand {
+            max-width: 300px;
+        }
+        .footer-brand .logo {
+            font-size: 1.5rem;
+            color: #f0e9dd;
+            margin-bottom: 0.6rem;
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+        .footer-links {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .footer-links h4 {
+            color: #d4a373;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 2px;
+        }
+        .footer-links ul li {
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            font-size: 0.8rem;
+            color: #6d6155;
+            border-top: 1px solid #2e2a25;
+            margin-top: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 0 1rem;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .main-nav {
+                display: none;
+                width: 100%;
+                margin-top: 0.8rem;
+            }
+            .main-nav.open {
+                display: block;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .main-nav a {
+                display: block;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .rank-list {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <div class="logo">幻奇<span>幻想奇闻集</span></div>
+        <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">奇闻档案</a></li>
+                <li><a href="#">幻想故事</a></li>
+                <li><a href="#">脑洞灵感</a></li>
+                <li><a href="#">幻奇图鉴</a></li>
+                <li><a href="#">关于幻奇</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>幻奇</h1>
+    <p class="sub">在现实与想象的缝隙间，收集每一个令人惊叹的奇思妙想。这里是无尽幻想的聚集地，等待你的探索。</p>
+    <span class="hero-tag">✦ 每日一份奇想 ✦</span>
+</section>
+
+<main>
+    <!-- 奇想分类 -->
+    <section class="category-section container">
+        <h2 class="section-title">奇想分类 <span class="line"></span></h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="icon">🐉</div>
+                <h3>奇幻生物</h3>
+                <p>龙与独角兽，未知物种档案</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">🌀</div>
+                <h3>异界传说</h3>
+                <p>穿越时空的奇遇旅程</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">📜</div>
+                <h3>神秘古卷</h3>
+                <p>被遗忘的秘闻与咒语</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">💡</div>
+                <h3>脑洞实验室</h3>
+                <p>不设限的创意火花</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">🌌</div>
+                <h3>星海奇旅</h3>
+                <p>宇宙尺度的幻想冒险</p>
+            </div>
+            <div class="category-card">
+                <div class="icon">🎭</div>
+                <h3>幻奇艺术</h3>
+                <p>幻想画作与视觉奇观</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新奇谈 -->
+    <section class="latest-section container">
+        <h2 class="section-title">最新奇谈 <span class="line"></span></h2>
+        <div class="story-grid">
+            <article class="story-card">
+                <div class="story-cover">🌫️</div>
+                <div class="story-body">
+                    <h3>雾中来客</h3>
+                    <p>凌晨三点的迷雾里，老钟表匠收到一封来自二十年前的信，寄信人却是他自己……</p>
+                    <div class="story-meta">
+                        <span>异界传说</span>
+                        <span>阅读 2.1k</span>
+                    </div>
+                </div>
+            </article>
+            <article class="story-card">
+                <div class="story-cover">📖</div>
+                <div class="story-body">
+                    <h3>会说话的旧书</h3>
+                    <p>图书馆角落那本无人借阅的百科全书，在午夜后会回答你提出的任何问题，但代价是……</p>
+                    <div class="story-meta">
+                        <span>神秘古卷</span>
+                        <span>阅读 1.8k</span>
+                    </div>
+                </div>
+            </article>
+            <article class="story-card">
+                <div class="story-cover">🔮</div>
+                <div class="story-body">
+                    <h3>梦境修补师</h3>
+                    <p>有一种职业能进入他人梦境，修补破碎的噩梦。但修补师自己，却从不做梦。</p>
+                    <div class="story-meta">
+                        <span>脑洞实验室</span>
+                        <span>阅读 3.4k</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 奇想灵感 -->
+    <section class="idea-section">
+        <div class="container">
+            <h2 class="section-title">奇想灵感工坊 <span class="line"></span></h2>
+            <div class="idea-grid">
+                <div class="idea-card">
+                    <span class="tag">创作挑战</span>
+                    <h3>假如影子有记忆</h3>
+                    <p>如果每个人的影子都记录着主人遗忘的过去，你会去询问它吗？</p>
+                </div>
+                <div class="idea-card">
+                    <span class="tag">幻想设定</span>
+                    <h3>反向重力城市</h3>
+                    <p>一座建造在云层之下、地面之上的城市，居民们走路时脚底朝天。</p>
+                </div>
+                <div class="idea-card">
+                    <span class="tag">奇闻探索</span>
+                    <h3>回声山谷</h3>
+                    <p>传说这个山谷中的回声会延迟七年返回，许多人在此等待年少时喊出的话。</p>
+                </div>
+                <div class="idea-card">
+                    <span class="tag">视觉奇观</span>
+                    <h3>星尘画师</h3>
+                    <p>用星尘作画的艺术家，每幅画完成时都会短暂地照亮整个夜空。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门榜单 -->
+    <section class="rank-section container">
+        <h2 class="section-title">幻奇热榜 <span class="line"></span></h2>
+        <div class="rank-list">
+            <div>
+                <div class="rank-item">
+                    <span class="rank-num">1</span>
+                    <div class="rank-info">
+                        <h4>永夜灯塔守</h4>
+                        <p>在永夜之地，灯塔守灯人守护着最后一束光，直到某天灯油变成了星光。</p>
+                    </div>
+                    <span class="hot">🔥 热</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">2</span>
+                    <div class="rank-info">
+                        <h4>时间杂货铺</h4>
+                        <p>这家杂货铺出售各种时间碎片，有人买走童年午后，有人出售未来的焦虑。</p>
+                    </div>
+                    <span class="hot">🔥 热</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">3</span>
+                    <div class="rank-info">
+                        <h4>影子动物园</h4>
+                        <p>城市边缘的废弃剧院里，藏着许多动物形状的影子，它们在等待主人。</p>
+                    </div>
+                    <span class="hot">✨ 赞</span>
+                </div>
+            </div>
+            <div>
+                <div class="rank-item">
+                    <span class="rank-num">4</span>
+                    <div class="rank-info">
+                        <h4>逆流之河</h4>
+                        <p>传说河中的鱼会逆流而上，而逆流而上的不只是鱼，还有时光。</p>
+                    </div>
+                    <span class="hot">✨ 赞</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">5</span>
+                    <div class="rank-info">
+                        <h4>梦游地图</h4>
+                        <p>一位制图师专画人们梦中去过的地方，这些地方在现实中渐渐出现。</p>
+                    </div>
+                    <span class="hot">💬 热议</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">6</span>
+                    <div class="rank-info">
+                        <h4>无声乐队</h4>
+                        <p>一支演奏无声音乐的乐队，观众却都听到了心中最想听的旋律。</p>
+                    </div>
+                    <span class="hot">💬 热议</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">关于幻奇 <span class="line"></span></h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>幻奇是什么？</h3>
+                    <p>幻奇是一个专注于幻想题材内容分享与创作的平台，汇集奇闻故事、脑洞灵感、设定集和幻想艺术，让每一个奇妙想法都有栖息之地。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>可以投稿自己的奇想故事吗？</h3>
+                    <p>当然可以。我们欢迎所有热爱幻想、喜欢创作的朋友投稿。无论是短篇故事、世界观设定、还是插画草图，只要内容契合“奇”与“幻”的主题，都欢迎提交。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>幻奇的内容是如何更新的？</h3>
+                    <p>平台每天更新精选奇谈与灵感卡片，每周发布创作挑战主题。内容由编辑团队和社区创作者共同贡献，保持新鲜感与多样性。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何参与幻奇社区的讨论？</h3>
+                    <p>你可以在每篇文章下方留言，也可以加入我们的创作群组，与同好交流脑洞。部分功能需要注册账号后开放。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="logo">幻奇</div>
+            <p>探索幻想边界，收集奇妙灵感。幻奇致力于为每一个好奇的灵魂提供源源不断的奇想与故事。</p>
+        </div>
+        <div class="footer-links">
+            <div>
+                <h4>内容分类</h4>
+                <ul>
+                    <li><a href="#">奇幻生物</a></li>
+                    <li><a href="#">异界传说</a></li>
+                    <li><a href="#">脑洞实验室</a></li>
+                    <li><a href="#">星海奇旅</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">幻奇故事</a></li>
+                    <li><a href="#">加入创作</a></li>
+                    <li><a href="#">投稿指南</a></li>
+                    <li><a href="#">联系幻奇</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>社区</h4>
+                <ul>
+                    <li><a href="#">幻想论坛</a></li>
+                    <li><a href="#">创作挑战</a></li>
+                    <li><a href="#">奇想征集</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2025 幻奇 HuanQi. 保留所有权利。 | 让想象自由生长
+    </div>
+</footer>
+
+<script>
+    // 移动端导航切换
+    document.getElementById('navToggle').addEventListener('click', function() {
+        var nav = document.getElementById('mainNav');
+        nav.classList.toggle('open');
+    });
+
+    // FAQ 折叠效果（简单实现）
+    var faqItems = document.querySelectorAll('.faq-item h3');
+    faqItems.forEach(function(header) {
+        header.addEventListener('click', function() {
+            var content = this.nextElementSibling;
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+              </html>
